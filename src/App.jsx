@@ -13,11 +13,9 @@ import Login from "./components/Login";
 function App() {
   return (
     <Routes>
-      <Route path="login" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/" element={<Layout />}>
-        <Route index path="dashboard" element={<Dashboard />} />
-
-
+        <Route  index element={<Dashboard />} />
         <Route path="employees" element={<ListEmployee />} />
         <Route path="employees/ajout" element={<EmployeeForm />} />
         <Route path="employees/edit" element={<EditEmployee />} />
