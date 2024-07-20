@@ -9,10 +9,10 @@ const Layout = () => {
       className="header fixed-top d-flex align-items-center"
     >
       <div className="d-flex align-items-center justify-content-between">
-        <a href="index.html" className="logo d-flex align-items-center">
+        <Link to='/' className="logo d-flex align-items-center">
           <img src="assets/img/logo.png" alt="" />
           <span className="d-none d-lg-block">GDE</span>
-        </a>
+        </Link>
         <i className="bi bi-list toggle-sidebar-btn"></i>
       </div>
 
@@ -32,7 +32,7 @@ const Layout = () => {
               data-bs-toggle="dropdown"
             >
               <img
-                src="src/assets/img/profile-img.jpg"
+                src="/img/profile-img.jpg"
                 alt="Profile"
                 className="rounded-circle"
               />
@@ -51,52 +51,43 @@ const Layout = () => {
               </li>
 
               <li>
-                <a
+                <Link
                   className="dropdown-item d-flex align-items-center"
-                  href="users-profile.html"
+                  to='/'
                 >
                   <i className="bi bi-person"></i>
                   <span>Profile</span>
-                </a>
+                </Link>
               </li>
               <li>
                 <hr className="dropdown-divider" />
               </li>
 
               <li>
-                <a
+                <Link
                   className="dropdown-item d-flex align-items-center"
-                  href="users-profile.html"
+                 to='/'
                 >
                   <i className="bi bi-gear"></i>
                   <span>Parametres</span>
-                </a>
+                </Link>
               </li>
               <li>
                 <hr className="dropdown-divider" />
               </li>
 
               <li>
-                <a
-                  className="dropdown-item d-flex align-items-center"
-                  href="pages-faq.html"
-                >
-                  <i className="bi bi-question-circle"></i>
-                  <span>Besoin daide?</span>
-                </a>
-              </li>
-              <li>
                 <hr className="dropdown-divider" />
               </li>
 
               <li>
-                <a
+                <Link
                   className="dropdown-item d-flex align-items-center"
-                  href="#"
+                  to='/login'
                 >
                   <i className="bi bi-box-arrow-right"></i>
                   <span>Deconnexion</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </li>
@@ -187,10 +178,10 @@ const Layout = () => {
 
 
         <li className="nav-item">
-          <a className="nav-link collapsed" href="pages-login.html">
+          <Link className="nav-link collapsed" to='/login'>
             <i className="bi bi-box-arrow-in-right"></i>
             <span>Deconnexion</span>
-          </a>
+          </Link>
         </li>
       </ul>
     </aside>

@@ -133,14 +133,14 @@ const Dashboard = () => {
               </div>
 
               <div className="card-body">
-                <h5 className="card-title">Customers</h5>
+                <h5 className="card-title">Salire total</h5>
 
                 <div className="d-flex align-items-center">
                   <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i className="bi bi-people"></i>
+                    <i className="bi bi-currency-dollar"></i>
                   </div>
                   <div className="ps-3">
-                    <h6>1244</h6>
+                    <h6>$1,244 M</h6>
                   </div>
                 </div>
               </div>

@@ -4,7 +4,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   function navigateToDashboard() {
-    navigate(`/dashboard`)
+    navigate(`/`)
   }
   return (
     <main>
