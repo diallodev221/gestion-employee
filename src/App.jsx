@@ -22,7 +22,7 @@ function App() {
 
         <Route path="departments" element={<ListDepartement />} />
         <Route path="departments/ajout" element={<DepartmentForm />} />
-        <Route path="departments/edit" element={<EditDepartment />} />
+        <Route path="departments/:id/edit" element={<EditDepartment />} />
         </Route>
     </Routes>
   );

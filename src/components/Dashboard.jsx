@@ -1,4 +1,48 @@
+import { useState, useEffect } from 'react';
+
 const Dashboard = () => {
+
+  const [totalEmployee, setTotalEmployee] = useState(0)
+  const [totalDepartment, setTotalDepartment] = useState(0)
+  const [totalSalary, setSalary] = useState(0)
+
+  useEffect(() => {
+    fetchTotalEmployees()
+    fetchTotalSalary()
+    fetchTotalDepartments()
+  }, [])
+
+
+  const fetchTotalEmployees = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/employees/total");
+      const data = await response.json();
+      setTotalEmployee(data);
+    } catch (error) {
+      console.error("Error fetching employees:", error);
+    }
+  };
+  const fetchTotalSalary = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/departments/total");
+      const data = await response.json();
+      setTotalDepartment(data);
+    } catch (error) {
+      console.error("Error fetching employees:", error);
+    }
+  };
+
+  const fetchTotalDepartments = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/employees/total-salary");
+      const data = await response.json();
+      setSalary(data);
+    } catch (error) {
+      console.error("Error fetching employees:", error);
+    }
+  };
+  
+
   return (
     <>
       <div className="pagetitle">
@@ -45,14 +89,14 @@ const Dashboard = () => {
               </div>
 
               <div className="card-body">
-                <h5 className="card-title text-start">Employees</h5>
+                <h5 className="card-title text-start">Employées</h5>
 
                 <div className="d-flex align-items-center">
                   <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i className="bi bi-people"></i>
                   </div>
                   <div className="ps-3">
-                    <h6>145</h6>
+                    <h6>{totalEmployee}</h6>
                   </div>
                 </div>
               </div>
@@ -89,14 +133,14 @@ const Dashboard = () => {
               </div>
 
               <div className="card-body">
-                <h5 className="card-title text-start">Departements</h5>
+                <h5 className="card-title text-start">Départements</h5>
 
                 <div className="d-flex align-items-center">
                   <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i className="bi bi-building"></i>
                   </div>
                   <div className="ps-3">
-                    <h6>264</h6>
+                    <h6>{ totalDepartment}</h6>
                   </div>
                 </div>
               </div>
@@ -133,14 +177,14 @@ const Dashboard = () => {
               </div>
 
               <div className="card-body">
-                <h5 className="card-title">Salire total</h5>
+                <h5 className="card-title">Salaire total</h5>
 
                 <div className="d-flex align-items-center">
                   <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i className="bi bi-currency-dollar"></i>
                   </div>
                   <div className="ps-3">
-                    <h6>$1,244 M</h6>
+                    <h6>{totalSalary}</h6>
                   </div>
                 </div>
               </div>

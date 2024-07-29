@@ -1,9 +1,48 @@
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 const ListEmployee = () => {
+
+  const [employees, setEmployees] = useState([])
+
+  
+
+  useEffect(() => {
+    fetchEmployees()
+  }, [])
+  
+
+
+  const fetchEmployees = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/employees");
+      const data = await response.json();
+      setEmployees(data);
+    } catch (error) {
+      console.error("Error fetching employees:", error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/employees/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Error deleting employee:", error);
+    }
+   
+  };
+
+
+
   return (
     <>
       <div className="pagetitle">
-      <h1>Liste Employees</h1>
+      <h1>Liste Employés</h1>
     </div>
 
     <section className="section">
@@ -12,78 +51,57 @@ const ListEmployee = () => {
 
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">Employees</h5>
+              <h5 className="card-title">Employés</h5>
 
               <table className="table datatable">
                 <thead>
-                  <tr>
+                    <tr>
                     <th>
-                      <b>Prenom</b>
+                      <b>ID</b>
                     </th>
-                    <th>Nom</th>
-                    <th>Telephone</th>
+                    <th>
+                      <b>Prénom</b>
+                    </th>
+                      <th>Nom</th>
+                      <th>Email</th>
                     <th>Addresse</th>
-                    <th>Email</th>
-                    <th data-type="date" data-format="YYYY/DD/MM">BirthDate</th>
+                    <th>Téléphone</th>
+                    <th>Position</th>
+                    <th className="text-bold">Salaire</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Unity </td>
-                    <td>Pugh</td>
-                    <td>778889900</td>
-                    <td>Dakar</td>
-                    <td>pugh@gmail.com</td>
-                    <td>2005/02/11</td>
-                    <td><span className="badge text-bg-success">active</span></td>
+                  <tbody>
+                    {employees.length > 0 ? employees.map((employee, index) => (
+                      <tr key={employee.id}>
+                    <td>{index + 1} </td>
+                    <td>{employee.firstName}</td>
+                    <td>{employee.lastName}</td>
+                    <td>{employee.email}</td>
+                    <td>{employee.address}</td>
+                        <td>{employee.phone}</td>
+                        <td>{employee.position}</td>
+                        <td>{employee.salary}</td>
+                        <td className="d-flex  gap-3">
+                            <Link
+                              className="nav-link nav-icon"
+                              to={`/employees/${employee.id}/edit`}
+                            >
+                              <i className="bi bi-pencil-square"></i>
+                            </Link>
+                            <button
+                            className="nav-link nav-icon"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                            onClick={() => handleDelete(employee.id)}
+                            >
+                              <i className="bi bi-trash"></i>
+                            </button>
+                          </td>
                     </tr>
-                    <tr>
-                    <td>Unity </td>
-                    <td>Pugh</td>
-                    <td>778889900</td>
-                    <td>Dakar</td>
-                    <td>pugh@gmail.com</td>
-                    <td>2005/02/11</td>
-                    <td><span className="badge text-bg-success">active</span></td>
-                    </tr>
-                    <tr>
-                    <td>Unity </td>
-                    <td>Pugh</td>
-                    <td>778889900</td>
-                    <td>Dakar</td>
-                    <td>pugh@gmail.com</td>
-                    <td>2005/02/11</td>
-                    <td><span className="badge text-bg-success">active</span></td>
-                    </tr>
-                    <tr>
-                    <td>Unity </td>
-                    <td>Pugh</td>
-                    <td>778889900</td>
-                    <td>Dakar</td>
-                    <td>pugh@gmail.com</td>
-                    <td>2005/02/11</td>
-                    <td><span className="badge text-bg-success">active</span></td>
-                    </tr>
-                    <tr>
-                    <td>Unity </td>
-                    <td>Pugh</td>
-                    <td>778889900</td>
-                    <td>Dakar</td>
-                    <td>pugh@gmail.com</td>
-                    <td>2005/02/11</td>
-                    <td><span className="badge text-bg-success">active</span></td>
-                    </tr>
-                    <tr>
-                    <td>Unity </td>
-                    <td>Pugh</td>
-                    <td>778889900</td>
-                    <td>Dakar</td>
-                    <td>pugh@gmail.com</td>
-                    <td>2005/02/11</td>
-                    <td><span className="badge text-bg-success">active</span></td>
-                  </tr>
+                    )): <tr><td colSpan={9}></td></tr>}
                   
+                    
                 </tbody>
               </table>
             </div>

@@ -6,6 +6,10 @@ const Login = () => {
   function navigateToDashboard() {
     navigate(`/`)
   }
+
+  // function login() {
+  //   fetch("http://localhost:8080/api/login")
+  // }
   return (
     <main>
     <div className="container">

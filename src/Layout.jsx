@@ -111,7 +111,7 @@ const Layout = () => {
             href="#"
           >
             <i className="bi bi-person"></i>
-            <span>Employees</span>
+            <span>Employées</span>
             <i className="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
@@ -122,21 +122,21 @@ const Layout = () => {
             <li>
               <Link to='/employees' href="components-alerts.html">
                 <i className="bi bi-circle"></i>
-                <span>Liste Employees</span>
+                <span>Liste Employées</span>
               </Link>
             </li>
             <li>
               <Link to='/employees/ajout'>
                 <i className="bi bi-circle"></i>
-                <span>Ajout Employee</span>
+                <span>Ajout Employée</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to='/employees/edit'>
                 <i className="bi bi-circle"></i>
                 <span>Modifier Employee</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </li>
         <li className="nav-item">
@@ -147,7 +147,7 @@ const Layout = () => {
             href="#"
           >
             <i className="bi bi-building"></i>
-            <span>Departements</span>
+            <span>Départements</span>
             <i className="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
@@ -158,21 +158,21 @@ const Layout = () => {
             <li>
               <Link to='/departments'>
                 <i className="bi bi-circle"></i>
-                <span>Liste departement</span>
+                <span>Liste département</span>
               </Link>
             </li>
             <li>
               <Link to='/departments/ajout'>
                 <i className="bi bi-circle"></i>
-                <span>Ajout departement</span>
+                <span>Ajout département</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to='/departments/edit'>
                 <i className="bi bi-circle"></i>
                 <span>Modifier departement</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </li>
 
@@ -180,7 +180,7 @@ const Layout = () => {
         <li className="nav-item">
           <Link className="nav-link collapsed" to='/login'>
             <i className="bi bi-box-arrow-in-right"></i>
-            <span>Deconnexion</span>
+            <span>Déconnexion</span>
           </Link>
         </li>
       </ul>
