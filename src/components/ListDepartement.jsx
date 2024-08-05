@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { toast, ToastContainer } from "react-toastify";
-import EditDepartment from "./EditDepartment";
+import {  ToastContainer } from "react-toastify";
 
 const ListDepartement = () => {
   const [departments, setDepartments] = useState([]);
@@ -76,8 +75,12 @@ const ListDepartement = () => {
                             {dept.manager != undefined ? dept.manager : "--"}
                           </td>
                           <td className="d-flex  gap-3">
-                            
-                            <EditDepartment department={dept}/>
+                            <Link
+                              to={`/departments/${dept.id}/edit`}
+                              className="nav-link nav-icon"
+                            >
+                            <i className="bi bi-pencil-square"></i>
+                            </Link>
                             <button
                               className="nav-link nav-icon"
                               onClick={() => handleDelete(dept.id)}
@@ -89,7 +92,7 @@ const ListDepartement = () => {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan={5}></td>
+                        <td colSpan={5}>Accune donnée</td>
                       </tr>
                     )}
                   </tbody>

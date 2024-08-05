@@ -18,7 +18,7 @@ function App() {
         <Route  index element={<Dashboard />} />
         <Route path="employees" element={<ListEmployee />} />
         <Route path="employees/ajout" element={<EmployeeForm />} />
-        <Route path="employees/edit" element={<EditEmployee />} />
+        <Route path="employees/:id/edit" element={<EditEmployee />} />
 
         <Route path="departments" element={<ListDepartement />} />
         <Route path="departments/ajout" element={<DepartmentForm />} />
